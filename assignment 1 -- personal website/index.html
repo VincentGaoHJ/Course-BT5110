@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>
+		Haojun Gao
+	</title>
+
+	<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="assets/css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+	<script src="assets/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+			});
+		});
+		window.onload=function(){
+			window.requestAnimationFrame(getDate)
+			}
+			
+		function getDate(){
+			window.setTimeout(function(){
+					window.requestAnimationFrame(getDate)
+				},1000/2)
+			var d=new Date();   
+			var year=d.getFullYear()
+			var month=d.getMonth()+1;
+			var day=d.getDay()
+			var days=d.getDate()
+			var hour=d.getHours()
+			var minute=d.getMinutes()
+			var second=d.getSeconds()
+				
+			if(month<10) month="0"+month
+			if(days<10) days="0"+days
+			if(hour<10) hour="0"+hour
+			if(minute<10) minute="0"+minute
+			if(second<10) second="0"+second
+				
+			var week=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
+			var Tools=document.getElementById("datetime")
+			var da=hour+" : "+minute+" : "+second+", "+week[day]+", "+days+" / "+month+" / "+year
+			Tools.innerHTML=da
+		}
+	</script>
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<!-- header -->
+<div class="header-w3layouts"> 
+  <!-- Navigation -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header page-scroll">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> <span class="sr-only">Vitae</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <h1><a class="navbar-brand" href="index.html" >Haojun(Vincent) Gao</a></h1>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+          <li class="hidden"><a class="page-scroll" href="#page-top"></a></li>
+          <li><a class="page-scroll scroll active" href="#home">HOME</a></li>
+          <li><a class="page-scroll scroll" href="#about">ABOUT</a></li> 
+          <li><a class="page-scroll scroll" href="#port">GALLERY</a></li>
+          <li><a class="page-scroll scroll" href="#contact">CONTACT</a></li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse --> 
+    </div>
+    <!-- /.container --> 
+  </nav>
+</div>
+<!-- //header -->
+<div class="header jarallax" id="home">
+  <div class="container">
+    <div class="banner-text text-center">
+      <h2>Haojun Gao's Personal Website</h2>
+      <h3 id="datetime"> - National University of Singapore - </h3>
+      <p>There may be a great fire in our soul, yet no one ever comes to warm himself at it, and the passers-by see only a wisp of smoke.</p>
+      <div class="w3l-button banner-btn"> <a href="https://github.com/VincentGaoHJ">More</a> </div>
+    </div>
+    <div class="w3-arrow bounce animated"> <a href="#about" class="scroll"><i class="fa fa-angle-down" aria-hidden="true"></i></a> </div>
+  </div>
+</div>
+
+<!-- About -->
+<div class="about" id="about">
+  <div class="container">
+    <h3 class="w3l-heading">ABOUT</h3>
+    <div class="col-md-4 w3-about-top">
+    	<a href="https://github.com/VincentGaoHJ"><img src="assets/images/gaohj_7.jpeg" class="img-responsive" alt="about-img"/></a>
+    </div>
+    <div class="col-md-8 w3l-about">
+      <div class="w3ls-heading">
+        <h2>Haojun, a machine learning engineer, trying something new.</h2>
+      </div>
+      <div class="w3ls-about-info">
+        <p> I am currently developing interpretable algorithms in a startup in Shanghai. The core idea is to provide smarter operating methods to traditional real estate giants and assist their business operations. Very excited to take this course full time and look forward to learning from you guys!</p>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+
+<!-- Portfolio -->
+<div class="portfolio" id="port">
+	<div class="port-head">
+		<h3 class="w3l-heading">GALLERY</h3>
+	</div>
+	<ul class="simplefilter"></ul>
+  	<div class="filtr-container"> 
+  		<div class="filtr-item gallery-t" data-category="1, 3" data-sort="Busy streets">
+      		<figure class="w3ls-gallery"> 
+      			<img src="assets/images/gaohj_1.jpg" class="img-responsive" alt="h" style="width:650px;height:250px;"/>
+      		</figure>
+      	</div>
+
+		<div class="filtr-item gallery-t" data-category="1, 3" data-sort="Busy streets"> 
+      		<figure class="w3ls-gallery"> 
+      			<img src="assets/images/gaohj_2.jpg" class="img-responsive" alt="g" style="width:650px;height:250px;"/>
+      		</figure>
+      	</div>
+
+		<div class="filtr-item gallery-t" data-category="1, 3" data-sort="Busy streets">
+      		<figure class="w3ls-gallery"> 
+      			<img src="assets/images/gaohj_3.jpg" class="img-responsive" alt="f" style="width:650px;height:250px;"/>
+      		</figure>
+      	</div>
+
+		<div class="filtr-item gallery-t" data-category="1, 3" data-sort="Busy streets">
+      		<figure class="w3ls-gallery"> 
+      			<img src="assets/images/gaohj_4.jpeg" class="img-responsive" alt="e" style="width:650px;height:250px;"/>
+      		</figure>
+      	</div>
+
+		<div class="filtr-item gallery-t" data-category="1, 3" data-sort="Busy streets">
+      		<figure class="w3ls-gallery"> 
+      			<img src="assets/images/gaohj_5.jpeg" class="img-responsive" alt="d" style="width:650px;height:250px;"/>
+      		</figure>
+      	</div>
+
+		<div class="filtr-item gallery-t" data-category="1, 3" data-sort="Busy streets">
+      		<figure class="w3ls-gallery"> 
+      			<img src="assets/images/gaohj_6.jpeg" class="img-responsive" alt="c" style="width:650px;height:250px;"/>
+      		</figure>
+      	</div>
+
+		<div class="filtr-item gallery-t" data-category="1, 3" data-sort="Busy streets">
+      		<figure class="w3ls-gallery"> 
+      			<img src="assets/images/scene_3.jpeg" class="img-responsive" alt="b" style="width:650px;height:250px;"/>
+      		</figure>
+      	</div>
+
+		<div class="filtr-item gallery-t" data-category="1, 3" data-sort="Busy streets">
+      		<figure class="w3ls-gallery"> 
+      			<img src="assets/images/scene_2.jpeg" class="img-responsive" alt="a" style="width:650px;height:250px;"/>
+      		</figure>
+      	</div>
+
+    <div class="clearfix"> </div>
+  </div>
+</div>
+<!-- //Portfolio --> 
+
+
+<!-- curriculum -->
+<div id="curriculum" class="w3_agileits-curriculum">
+  <div class="container">
+	<h3 class="w3l-heading" >TABLE</h3>
+	<ul class="simplefilter"></ul>
+    <div class="w3_agile-curriculum  jarallax text-center">
+     	<table id="curriculum">
+			<tr>
+			  <th>Modules</th>
+			  <th>Course Code</th>
+			  <th>Faculty</th>
+			</tr>
+			<tr >
+				<td>Data Management and Warehousing</td>
+				<td>BT5110</td>
+				<td>School of Computing (Dept of Computer Science)</td>
+			</tr>
+			<tr class="alt">
+				<td>Analytics in Managerial Economics</td>
+				<td>DBA5101</td>
+				<td>School of Business (Dept of Analytics & Operations)</td>
+			</tr>
+			<tr>
+				<td>Business Analytics Capstone Module</td>
+				<td>DBA5102</td>
+				<td>School of Business (Dept of Analytics & Operations</td>
+			</tr>
+			<tr class="alt">
+				<td>Operations Research and Analytics</td>
+				<td>DBA5103</td>
+				<td>School of Business (Dept of Analytics & Operations)</td>
+			</tr>
+			<tr>
+				<td>Foundation in Business Analytics</td>
+				<td>DBA5106/BT5154</td>
+				<td>School of Business (Dept of Analytics & Operations)</td>
+			</tr>
+		</table>
+    </div>
+  </div>
+</div>
+<!-- //curriculum --> 
+
+
+<!-- contact -->
+<div id="contact" class="w3_agileits-contact">
+  <div class="container">
+	<h3 class="w3l-heading">CONTACT</h3>
+	<ul class="simplefilter"></ul>
+    <div class="w3_agile-contact  jarallax text-center">
+      <a href="mailto:haojun.gao@u.nus.edu">haojun.gao@u.nus.edu</a>
+      <ul class="social-icons-w3_agile">
+      	<li><a href="https://github.com/VincentGaoHJ" class="fa fa-github icon icon-border github"> </a></li>
+      	<li><a href="https://www.instagram.com/vincent_gaohj/" class="fa fa-instagram icon icon-border instagram"> </a></li>
+      	<li><a href="https://twitter.com/Vincent_GHJ" class="fa fa-twitter icon icon-border twitter"> </a></li>
+        <li><a href="https://www.facebook.com/haojun.gao.104" class="fa fa-facebook icon icon-border facebook"> </a></li>
+        <li><a href="https://www.linkedin.com/in/haojun-gao/" class="fa fa-linkedin icon icon-border linkedin"> </a></li>        
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- //contact --> 
+
+<!-- footer -->
+<div class="agileits_w3layouts-footer text-center">
+  <div class="container">
+    <p>Copyright @ 2020 <a href="https://gaohaojun.cn/Blog/" target="_blank">Haojun Gao's Blog</a> All Rights Reserved. <a href="https://gaohaojun.cn/" target="_blank">Power by Haojun Gao</a></p>
+  </div>
+</div>
+<!-- //footer --> 
+
+</body>
+</html>

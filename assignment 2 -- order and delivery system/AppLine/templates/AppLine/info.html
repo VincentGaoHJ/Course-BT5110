@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    <title>Result</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        table {
+            margin: auto;
+        }
+
+        th {
+            height: 60px;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/info.css' %}"/>
+</head>
+
+<body>
+<header>
+    <div>
+        <div id="title">{{ message }}</div>
+        <div id="titlebottom">
+            {{ subMessage }}
+        </div>
+        <div id="login">
+            <div>VIEW YOUR INVENTORY DETAIL</div>
+            <table class="gridtable" width="900">
+                <tr>
+                    <th>ITEM</th>
+                    <th>ITEM ID</th>
+                    <th>WAREHOUSE</th>
+                    <th>WAREHOUSE ID</th>
+                    <th>QUANTITY</th>
+                </tr>
+                <tr>
+                    <td>{{ itemInfo.item }}</td>
+                    <td>{{ itemInfo.itemId }}</td>
+                    <td>{{ itemInfo.Warehouse }}</td>
+                    <td>{{ itemInfo.WarehouseId }}</td>
+                    <td>{{ itemInfo.qty }}</td>
+                </tr>
+            </table>
+        </div>
+        <div type="button" id="backbutton">
+             <a href=".."> BACK TO HOMEPAGE </a>
+        </div>
+
+    </div>
+</header>
+
+<footer>
+    <div>
+        <div>
+            <p>HAOJUN GAO</p>
+        </div>
+        <div>
+            <p>DATA MANAGEMENT</p>
+        </div>
+        <div>
+            <p>NUS MSBA STUDENT</p>
+        </div>
+        <div>
+            <p>ENJOY MY LIFE</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+</html>

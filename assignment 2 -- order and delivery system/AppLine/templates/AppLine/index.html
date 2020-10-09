@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <style>
+        table {
+            margin: auto;
+        }
+
+        th {
+            height: 60px;
+        }
+    </style><link rel="stylesheet" type="text/css" href="{% static '/css/index.css' %}"/>
+
+</head>
+<body>
+<header>
+    <div id="title">Search for Inventory</div>
+    <div id="login">
+        <div></div>
+        <div></div>
+        <div>
+            <form>
+                <input type="text" placeholder="  ITEM" id="item_str">
+                <input type="text" placeholder="  WAREHOUSE" id="warehouse_str">
+                <input type="button" value="SUBMIT" onclick="searchDatabase()">
+            </form>
+        </div>
+    </div>
+
+
+    <div id="display"></div>
+    <div id="new_adding"></div>
+</header>
+
+
+<script>
+    function searchDatabase() {
+        item_str = document.getElementById('item_str').value
+        warehouse_str = document.getElementById('warehouse_str').value
+        display = document.getElementById('display')
+        new_adding = document.getElementById('new_adding')
+
+        // Check if a customer is selected
+        // ===	equal value and equal type
+        if (item_str === "" && warehouse_str === "") {
+            display.innerHTML = "";
+            new_adding.innerHTML = "";
+            return;
+        }
+
+        // Create an XMLHttpRequest object
+        var xhttp;
+        xhttp = new XMLHttpRequest();
+
+        // Create the function to be executed when the server response is ready
+        // An EventHandler that is called whenever the readyState attribute changes.
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                // border: Thickness of the border in pixels
+                var res_obj = JSON.parse(this.responseText);
+                var i_name_lst = eval(JSON.stringify(res_obj.i_name));
+                var i_id_lst = eval(JSON.stringify(res_obj.i_id));
+                var w_name_lst = eval(JSON.stringify(res_obj.w_name));
+                var w_id_lst = eval(JSON.stringify(res_obj.w_id));
+                var s_qty_lst = eval(JSON.stringify(res_obj.s_qty));
+
+                var row_num = i_name_lst.length
+
+                var searchTable = '<div><table width=1000" id="tab" style="cursor: pointer;">'
+
+                searchTable += '<thead><tr>'
+                searchTable += '<th hidden="hidden"></th>'
+                searchTable += '<th>ITEM</th>'
+                searchTable += '<th>ITEM ID</th>'
+                searchTable += '<th>WAREHOUSE</th>'
+                searchTable += '<th>WAREHOUSE ID</th>'
+                searchTable += '<th>QUANTITY</th>'
+                searchTable += '</tr></thead>'
+
+                searchTable += '<tbody>'
+                for (var i = 0; i < row_num; i++) {
+                    searchTable += '<tr onclick="c1(this);">'
+                    // if (i % 2 === 0) {
+                    //     searchTable += '<tr onclick="c1(this);" bgcolor="#cccccc">'
+                    // } else {
+                    //     searchTable += '<tr onclick="c1(this);" bgcolor="#e0e0e0">'
+                    // }
+                    searchTable += "<td>" + i_name_lst[i] + "</td>"
+                    searchTable += "<td>" + i_id_lst[i] + "</td>"
+                    searchTable += "<td>" + w_name_lst[i] + "</td>"
+                    searchTable += "<td>" + w_id_lst[i] + "</td>"
+                    searchTable += "<td>" + s_qty_lst[i] + "</td>"
+                    searchTable += '</tr>'
+                }
+
+                searchTable += '</tbody></table><div>';
+                var insert_content = '<div id="subtitle1">Inventory List</div>'
+                insert_content += searchTable
+                display.innerHTML = insert_content;
+            }
+        };
+
+        // Send the request off to a file on the server
+        var base = window.location.href
+        var url = base + 'inventory/?i_name=' + item_str + '&w_name=' + warehouse_str;
+        // open() initializes a newly-created request, or re-initializes an existing one.
+        // url: A DOMString representing the URL to send the request to.
+        // method: the type of request: GET or POST
+        // url: the server (file) location
+        // async: true (asynchronous) or false (synchronous)
+        xhttp.open("GET", url, true);
+        xhttp.send();
+
+
+        // Create an XMLHttpRequest object
+        var xhttp_newProduct = new XMLHttpRequest();
+
+        // Create the function to be executed when the server response is ready
+        // An EventHandler that is called whenever the readyState attribute changes.
+        xhttp_newProduct.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                // border: Thickness of the border in pixels
+                var res_obj = JSON.parse(this.responseText);
+                var i_name_lst = eval(JSON.stringify(res_obj.i_name));
+                var i_id_lst = eval(JSON.stringify(res_obj.i_id));
+                var w_name_lst = eval(JSON.stringify(res_obj.w_name));
+                var w_id_lst = eval(JSON.stringify(res_obj.w_id));
+
+                var row_num = i_name_lst.length
+
+                if (row_num == 0) {
+                    new_adding.innerHTML = "";
+                    return;
+                }
+
+                var newTable = '<div><table width=1000" id="tab" style="cursor: pointer;">'
+
+                newTable += '<thead><tr>'
+                newTable += '<th hidden="hidden"></th>'
+                newTable += '<th>ITEM</th>'
+                newTable += '<th>ITEM ID</th>'
+                newTable += '<th>WAREHOUSE</th>'
+                newTable += '<th>WAREHOUSE ID</th>'
+                newTable += '<th>QUANTITY</th>'
+                newTable += '</tr></thead>'
+
+                newTable += '<tbody>'
+                for (var i = 0; i < row_num; i++) {
+                    newTable += '<tr onclick="c1(this);">'
+                    // if (i % 2 === 0) {
+                    //     newTable += '<tr onclick="c1(this);" bgcolor="#cccccc">'
+                    // } else {
+                    //     newTable += '<tr onclick="c1(this);" bgcolor="#e0e0e0">'
+                    // }
+                    newTable += "<td>" + i_name_lst[i] + "</td>"
+                    newTable += "<td>" + i_id_lst[i] + "</td>"
+                    newTable += "<td>" + w_name_lst[i] + "</td>"
+                    newTable += "<td>" + w_id_lst[i] + "</td>"
+                    newTable += "<td>" + 'NA' + "</td>"
+                    newTable += '</tr>'
+                }
+
+                newTable += '</tbody></table><div>';
+                var insert_content2 = '<div id="subtitle2">Add New Stock to the Warehouse</div>'
+                insert_content2 += newTable
+                new_adding.innerHTML = insert_content2;
+            }
+        };
+
+
+        url = base + 'new_product/?i_name=' + item_str + '&w_name=' + warehouse_str;
+        xhttp_newProduct.open("GET", url, true);
+        xhttp_newProduct.send();
+    }
+
+    function c1(obj) {
+        obj.style.backgroundColor = 'blue';
+        var txt;
+        var msg = 'You are choosing ' + obj.cells[0].innerText + ' from ' + obj.cells[2].innerText
+        var r = confirm(msg);
+        if (r === true) {
+            var url = 'transaction/?i_id=' + obj.cells[1].innerText + '&w_id=' + obj.cells[3].innerText;
+            window.location.href = url;
+        } else {
+            txt = "You pressed Cancel!";
+        }
+    }
+</script>
+</body>
+</html>

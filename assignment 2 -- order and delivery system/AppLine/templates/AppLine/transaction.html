@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Transaction</title>
+    <script type="text/javascript">
+        function numPlus() {
+            var p = parseInt(document.getElementById('quantity').value);
+            document.getElementById('quantity').value = p + 1;
+        }
+
+        function numMinus() {
+            var p = parseInt(document.getElementById('quantity').value);
+            if (p - 1 >= 0) {
+                document.getElementById('quantity').value = p - 1
+            } else if (p - 1 == 0) {
+                document.getElementById('quantity').value = 0
+            }
+        }
+    </script>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/transaction.css' %}"/>
+</head>
+<body>
+<header>
+    <div id="title">The Product You Selected is Item {{ item_id }} from the {{ warehouse_id }} Warehouse</div>
+    <div id="operation">
+        <div></div>
+        <div></div>
+        <div>
+            <form action="../operation/" method="GET">
+                QUANTITY :
+                <input type="button" name="minus" value="-" onclick="numMinus()"/>
+                <input type="text" name="qty" value=1 id="quantity"/>
+                <input type="button" name="plus" value="+" onclick="numPlus()"/>
+
+                OPERATION :
+                <select name="type" id="selectType">
+                    <option>-- Please Choose--</option>
+                    <option value="order" selected="selected">order</option>
+                    <option value="delivery">delivery</option>
+                </select>
+                <input type="Submit" value="SUBMIT"/>
+                <input type="hidden" name="i_id" value="{{ item_id }}"/>
+                <input type="hidden" name="w_id" value="{{ warehouse_id }}"/>
+            </form>
+        </div>
+        <div type="button" id="backbutton">
+             <a href=".."> BACK TO HOMEPAGE </a>
+        </div>
+    </div>
+</header>
+
+</body>
+</html>

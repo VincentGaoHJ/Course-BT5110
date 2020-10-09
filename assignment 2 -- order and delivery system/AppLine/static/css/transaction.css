@@ -1,0 +1,82 @@
+body {
+    font-family: "Microsoft Yahei", sans-serif;
+    font-weight: lighter;
+}
+
+header {
+    background-image: url(../image/brennan-burling.jpg);
+    color: white;
+    width: 1600px;
+    height: 990px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#title {
+    display: inline-block;
+    font-size: 36px;
+    padding-top: 100px;
+    width: 1160px;
+}
+
+
+#operation {
+    display: inline-block;
+    /*border: 1px solid white;*/
+    width: 960px;
+    height: 240px;
+}
+
+#operation div:first-child {
+    font-size: 20px;
+    transform: scale(1.2, 1);
+    padding-top: 60px;
+    padding-bottom: 15px;
+}
+
+#operation div:nth-child(2) {
+    font-size: 1em;
+    transform: scale(1.2, 1);
+    color: rgb(90, 90, 90);
+}
+
+#operation div input:first-child {
+    width: 70px;
+    height: 20px;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+}
+
+#operation div input:nth-child(2) {
+    text-align: center;
+    width: 150px;
+    height: 20px;
+    border: none;
+}
+
+#operation div input:nth-child(3) {
+    width: 70px;
+    height: 20px;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+}
+
+#operation div input:nth-child(5) {
+    width: 120px;
+    height: 20px;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+}
+
+#backbutton {
+    padding-top: 20px;
+}
+
+section {
+    width: 1600px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
